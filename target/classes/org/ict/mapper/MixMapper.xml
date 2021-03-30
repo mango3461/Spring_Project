@@ -7,8 +7,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="getUpList"
 			resultType="org.ict.domain.MixVO">
-		SELECT cgupcimg FROM clothgam		
+		select cgupcimg from cgupcloth
 	
+	</select>
+	<select id="getDownList" resultType="org.ict.domain.MixVO">
+		select cgdowncimg from cgdowncloth
 	</select>
 
 </mapper>

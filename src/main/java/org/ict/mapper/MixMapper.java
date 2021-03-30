@@ -7,4 +7,6 @@ import org.ict.domain.MixVO;
 public interface MixMapper {
 
 	public List<MixVO> getUpList();
+
+	public List<MixVO> getDownList();
 }

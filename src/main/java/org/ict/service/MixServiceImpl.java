@@ -18,6 +18,14 @@ public class MixServiceImpl implements MixService {
 	public List<MixVO> getUpList() {
 		return mapper.getUpList();
 	}
+
+
+	@Override
+	public List<MixVO> getDownList() {
+		return mapper.getDownList();
+	}
+
+
 	
 //	@Override
 //	public void make(MixVO mix) {

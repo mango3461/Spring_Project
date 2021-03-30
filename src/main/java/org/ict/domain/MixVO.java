@@ -6,11 +6,11 @@ import lombok.Data;
 public class MixVO {
 	public int cgMixNo;
 	public int cgUpcNo;
-	public boolean cgUpcGender;
+	public boolean cgUpcGen;
 	public String cgUpcLink;
 	public String cgUpcImg;
 	public int cgDowncNo;
-	public boolean cgDowncGender;
+	public boolean cgDowncGen;
 	public String cgDowncLink;
 	public String cgDowncImg;
 	

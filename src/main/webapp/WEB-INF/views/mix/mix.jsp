@@ -85,11 +85,9 @@
 
                     <div class="col-md-1 col-sm-1"></div>
                     <div class="col-md-4 col-sm-4">
-                        <div class="col-lg-12 col-sm-12" id="cg-mix">
-                            <a class="img" href="/옷감/랭킹리스트.html">
-                                <img class="img-fluid" src="/resources/assets/img/cgup/1.PNG" 
-                                    style="width: 390px; height: 390px; object-fit: cover;"/>
-                            </a>
+                        <div id="pickUpImg" class="col-lg-12 col-sm-12">
+<!-- 	                        <img class="img-fluid" src="/resources/assets/img/cgup/1.PNG"  -->
+<!-- 	                            style="width: 390px; height: 390px; object-fit: cover;"/> -->
                         </div>
                     </div>
                 </div>
@@ -113,7 +111,7 @@
 
                     <div class="col-md-1 col-sm-1"></div>
                     <div class="col-md-4 col-sm-4">
-                        <div class="col-lg-12 col-sm-12" id="cg-mix">
+                        <div class="col-lg-12 col-sm-12" id="choiceDown">
                             <a class="img" href="/옷감/랭킹리스트.html">
                                 <img class="img-fluid" src="/resources/assets/img/cgdown/1.PNG" 
                                     style="width: 390px; height: 390px; object-fit: cover;"/>
@@ -124,7 +122,7 @@
 	                <div class="row">
 	                    <div class="col-md-8 col-sm-8"></div>
 	                    <div class="col-md-4 col-sm-4">
-	                        <button position="left" style="height: 40px; width: 80px; font-size: 0.25rem;">투표 올리기</button>
+	                        <button id="button" position="left" style="height: 40px; width: 80px; font-size: 0.25rem;">투표 올리기</button>
 	                        <button position="right" style="height: 40px; width: 80px; font-size: 0.25rem;">내 옷장 넣기</button>
 	                    </div>
 	                </div>
@@ -140,7 +138,7 @@
             					str += "<div class='col-md-2 col-sm-2'>"            						
             						+ "<img class='img-fluid img-thumbnail' src='/resources/assets/img/cgup/" 
             						+ this.cgUpcImg
-                                	+ "' style='width: 100px; height: 100px; object-fit: cover;'>"
+                                	+ "' style='width: 100px; height: 100px; object-fit: cover;' />"
                                 	+ "</div><div class='col-md-1 col-sm-1'></div>"
             				});//each
             				$("#upImg").html(str);
@@ -156,13 +154,27 @@
             					str += "<div class='col-md-2 col-sm-2'>"            						
             						+ "<img class='img-fluid img-thumbnail' src='/resources/assets/img/cgdown/" 
             						+ this.cgDowncImg
-                                	+ "' style='width: 100px; height: 100px; object-fit: cover;'>"
+                                	+ "' style='width: 100px; height: 100px; object-fit: cover;' />"
                                 	+ "</div><div class='col-md-1 col-sm-1'></div>"
             				});//each
             				$("#downImg").html(str);
             			});//JSON
             		}//getDownList
 					getDownList();
+            		
+            		$("button").on("click", function(){
+            			var str = "";
+            			
+            			console.log("hello");
+            			str = "<div class='col-lg-12 col-sm-12'>"
+                        	+ "<img class='img-fluid' src=''/resources/assets/img/cgup/'"
+                        	+ this.cgUpcImg
+                            + " style='width: 390px; height: 390px; object-fit: cover;' /></div>";
+                        $("#pickUpImg").html(str);
+                          
+            		});//onclick
+            		
+            
             		
             	});//document
             </script>

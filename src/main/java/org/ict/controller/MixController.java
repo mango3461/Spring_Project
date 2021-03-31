@@ -48,7 +48,23 @@ public class MixController {
 			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		return entity;
-}
+	}
+	
+//	@GetMapping(value="/choice",
+//				produces = {MediaType.APPLICATION_XML_VALUE,
+//							MediaType.APPLICATION_JSON_UTF8_VALUE})
+//	public ResponseEntity<MixVO> choice() {
+//		ResponseEntity<MixVO> entity = null;
+//		
+//		try {
+//			entity = new ResponseEntity<>(service. , HttpStatus.OK);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//		}
+//		
+//		return entity;
+//	}
 }
 	
 

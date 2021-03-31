@@ -39,8 +39,25 @@ public class HomeController {
 	
 	@GetMapping("/mix")
 	public String mix() {
-		return "/mix";
+		return "/mix/mix";
 	}
+	@GetMapping("/vote")
+	public String vote() {
+		return "/vote/vote";
+	}
+	@GetMapping("/rank")
+	public String rank() {
+		return "/rank/rank";
+	}
+	@GetMapping("/board")
+	public String board() {
+		return "/board/list";
+	}
+	@GetMapping("/login")
+	public String login() {
+		return "/member/login";
+	}
+	
 	
 	@GetMapping("/test")
 	public void mixtest(){

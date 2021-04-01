@@ -111,11 +111,11 @@
 
                     <div class="col-md-1 col-sm-1"></div>
                     <div class="col-md-4 col-sm-4">
-                        <div class="col-lg-12 col-sm-12" id="choiceDown">
-                            <a class="img" href="/옷감/랭킹리스트.html">
-                                <img class="img-fluid" src="/resources/assets/img/cgdown/1.PNG" 
-                                    style="width: 390px; height: 390px; object-fit: cover;"/>
-                            </a>
+                        <div id="pickDownImg" class="col-lg-12 col-sm-12" >
+<!-- <!--                             <a class="img" href="/옷감/랭킹리스트.html"> -->
+<!--                                 <img class="img-fluid" src="/resources/assets/img/cgdown/1.PNG"  -->
+<!--                                     style="width: 390px; height: 390px; object-fit: cover;"/> -->
+<!-- <!--                             </a> -->
                         </div>
                     </div>
 				</div>
@@ -129,14 +129,15 @@
 	            </div><!-- container -->
             </main>
             <script type="text/javascript">
+            		
             	$(document).ready(function(){
             		function getUpList() {
             			$.getJSON("/list/up", function(data){
             				var str = "";
             				
             				$(data).each(function(){
-            					str += "<div class='col-md-2 col-sm-2'>"            						
-            						+ "<img class='img-fluid img-thumbnail' src='/resources/assets/img/cgup/" 
+            					str += "<div class='cgUp col-md-2 col-sm-2'>"            						
+            						+ "<img class='img-fluid img-thumbnail' src='/resources/assets/img/cgup/"
             						+ this.cgUpcImg
                                 	+ "' style='width: 100px; height: 100px; object-fit: cover;' />"
                                 	+ "</div><div class='col-md-1 col-sm-1'></div>"
@@ -162,18 +163,30 @@
             		}//getDownList
 					getDownList();
             		
-            		$("button").on("click", function(){
-            			var str = "";
+            		$("#upImg").on("click", "img", function(){
+
+            			var str = "";            			
+//             			console.log(this.src);
             			
-            			console.log("hello");
             			str = "<div class='col-lg-12 col-sm-12'>"
-                        	+ "<img class='img-fluid' src=''/resources/assets/img/cgup/'"
-                        	+ this.cgUpcImg
-                            + " style='width: 390px; height: 390px; object-fit: cover;' /></div>";
+                        	+ "<img class='img-fluid' src='"
+                        	+ this.src
+                            + "' style='width: 390px; height: 390px; object-fit: cover;' /></div>";
                         $("#pickUpImg").html(str);
                           
             		});//onclick
-            		
+            		$("#downImg").on("click", "img", function(){
+
+            			var str = "";            			
+//             			console.log(this.src);
+            			
+            			str = "<div class='col-lg-12 col-sm-12'>"
+                        	+ "<img class='img-fluid' src='"
+                        	+ this.src
+                            + "' style='width: 390px; height: 390px; object-fit: cover;' /></div>";
+                        $("#pickDownImg").html(str);
+                          
+            		});//onclick
             
             		
             	});//document

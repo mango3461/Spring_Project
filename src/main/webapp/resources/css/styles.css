@@ -80,8 +80,9 @@ body {
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important;
 }
-main {
-
+.main {
+  width: 100%;
+  max-width: 1539px;
 }
 .row {
   color: white;

@@ -20,7 +20,7 @@
 <!-- Third party plugin CSS-->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="/resources/css/styles.css" rel="stylesheet" />
+<link href="/resources/css/styles.css" rel="stylesheet" />
 </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -46,88 +46,39 @@
                 </div>
             </div>
         </nav>
-        <!-- Masthead-->
-        <main>
+        <div class="main">
             
             <div class="container h-100">
-            
-                <!-- <div class="row">
-                    <div class="col-md-3 col-sm-3">
-                        <div class="text-center">옷 상의</div>
+            <div class="row">
+            <div class="col-md-8">
+            <div class="row">
+            	<div class="col-md-6">
+            	
+	       			<ul id="upImg">
+	       			<!-- 상의 리스트 -->
+	       			</ul>
+            	</div>
+            	<div class="col-md-6">
+	             	<ul id="downImg">
+	       			<!-- 하의 리스트 -->
+	       			</ul>
+            	</div>
+            </div>
+            </div>
+            	<div class="col-md-1"></div>
+            	<div class="col-md-3">
+                    <div id="pickUpImg">
+                    <!-- 선택한 상의 이미지 공간 -->
                     </div>
-                    <div class="col-md-1 col-sm-1"></div>
-                    <div class="col-md-3 col-sm-3">
-                        <div class="text-center">옷 하의</div>
+                    <div id="pickDownImg">
+                    <!-- 선택한 하의 이미지 공간 -->
                     </div>
-                    <div class="col-md-1 col-sm-1"></div>
-                    <div class="col-md-4 col-sm-4">
-                        <div class="text-center">옷 조합</div>
-                    </div>
-                </div> -->
-                <div class="row">
-                    <div id="upImg" class="col-md-3 col-sm-3">
-<!--                     	<img src="/resources/assets/img/cgup/1.PNG"> -->
-<!--                         <div class="col-md-2 col-sm-2"> -->
-<!--                             <a class="img-thumbnail" href="/옷감/랭킹리스트.html"> -->
-<!--                                 <img class="img-fluid" src="./assets/img/cgup/1.PNG"  -->
-<!--                                     style="width: 100px; height: 100px; object-fit: cover;" /> -->
-<!--                             </a> -->
-<!--                         </div> -->
-<!--                         <div class="col-md-1 col-sm-1"></div> -->
-<!--                         <div class="col-md-2 col-sm-2"> -->
-<!--                             <a id="upImg" class="img-thumbnail" href="/옷감/랭킹리스트.html"> -->
-<!--                                 <img class="img-fluid" src="./assets/img/cgup/2.PNG"  -->
-<!--                                     style="width: 100px; height: 100px; object-fit: cover;" /> -->
-<!--                             </a> -->
-<!--                         </div> -->
-                   	</div>
-                    <div class="col-md-1 col-sm-1"></div>
-
-                    <div class="col-md-1 col-sm-1"></div>
-                    <div class="col-md-4 col-sm-4">
-                        <div id="pickUpImg" class="col-lg-12 col-sm-12">
-<!-- 	                        <img class="img-fluid" src="/resources/assets/img/cgup/1.PNG"  -->
-<!-- 	                            style="width: 390px; height: 390px; object-fit: cover;"/> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div id="downImg" class="col-md-3 col-sm-3">
-<!--                         <div class="col-md-2 col-sm-2"> -->
-<!--                             <a class="img-thumbnail" href="/옷감/랭킹리스트.html"> -->
-<!--                                 <img class="img-fluid" src="/resources/assets/img/cgdown/1.PNG"  -->
-<!--                                     style="width: 100px; height: 100px; object-fit: cover;" /> -->
-<!--                             </a> -->
-<!--                         </div> -->
-<!--                         <div class="col-md-1 col-sm-1"></div> -->
-<!--                         <div class="col-md-2 col-sm-2"> -->
-<!--                             <a class="img-thumbnail" href="/옷감/랭킹리스트.html"> -->
-<!--                                 <img class="img-fluid" src="/resources/assets/img/cgdown/2.PNG"  -->
-<!--                                     style="width: 100px; height: 100px; object-fit: cover;" /> -->
-<!--                             </a> -->
-<!--                         </div> -->
-                    </div>
-                    <div class="col-md-1 col-sm-1"></div>
-
-                    <div class="col-md-1 col-sm-1"></div>
-                    <div class="col-md-4 col-sm-4">
-                        <div id="pickDownImg" class="col-lg-12 col-sm-12" >
-<!-- <!--                             <a class="img" href="/옷감/랭킹리스트.html"> -->
-<!--                                 <img class="img-fluid" src="/resources/assets/img/cgdown/1.PNG"  -->
-<!--                                     style="width: 390px; height: 390px; object-fit: cover;"/> -->
-<!-- <!--                             </a> -->
-                        </div>
-                    </div>
-				</div>
-	                <div class="row">
-	                    <div class="col-md-8 col-sm-8"></div>
-	                    <div class="col-md-4 col-sm-4">
-	                        <button id="button" position="left" style="height: 40px; width: 80px; font-size: 0.25rem;">투표 올리기</button>
-	                        <button position="right" style="height: 40px; width: 80px; font-size: 0.25rem;">내 옷장 넣기</button>
-	                    </div>
-	                </div>
-	            </div><!-- container -->
-            </main>
+            	</div>
+            </div>
+                     <button position="left" style="height: 40px; width: 80px; font-size: 0.25rem;">투표 올리기</button>
+                     <button position="right" style="height: 40px; width: 80px; font-size: 0.25rem;">내 옷장 넣기</button>
+         	</div><!-- container -->
+        </div>
             <script type="text/javascript">
             		
             	$(document).ready(function(){
@@ -136,11 +87,9 @@
             				var str = "";
             				
             				$(data).each(function(){
-            					str += "<div class='cgUp col-md-2 col-sm-2'>"            						
-            						+ "<img class='img-fluid img-thumbnail' src='/resources/assets/img/cgup/"
+            					str += "<img class='img-fluid img-thumbnail' src='/resources/assets/img/cgup/"
             						+ this.cgUpcImg
                                 	+ "' style='width: 100px; height: 100px; object-fit: cover;' />"
-                                	+ "</div><div class='col-md-1 col-sm-1'></div>"
             				});//each
             				$("#upImg").html(str);
             			});//JSON
@@ -152,11 +101,9 @@
             				var str = "";
             				
             				$(data).each(function(){
-            					str += "<div class='col-md-2 col-sm-2'>"            						
-            						+ "<img class='img-fluid img-thumbnail' src='/resources/assets/img/cgdown/" 
+            					str += "<img class='img-fluid img-thumbnail' src='/resources/assets/img/cgdown/" 
             						+ this.cgDowncImg
                                 	+ "' style='width: 100px; height: 100px; object-fit: cover;' />"
-                                	+ "</div><div class='col-md-1 col-sm-1'></div>"
             				});//each
             				$("#downImg").html(str);
             			});//JSON
@@ -166,24 +113,20 @@
             		$("#upImg").on("click", "img", function(){
 
             			var str = "";            			
-//             			console.log(this.src);
             			
-            			str = "<div class='col-lg-12 col-sm-12'>"
-                        	+ "<img class='img-fluid' src='"
+            			str = "<img class='img-fluid' src='"
                         	+ this.src
-                            + "' style='width: 390px; height: 390px; object-fit: cover;' /></div>";
+                            + "' style='width: 390px; height: 390px; object-fit: cover;' />";
                         $("#pickUpImg").html(str);
                           
             		});//onclick
             		$("#downImg").on("click", "img", function(){
 
             			var str = "";            			
-//             			console.log(this.src);
             			
-            			str = "<div class='col-lg-12 col-sm-12'>"
-                        	+ "<img class='img-fluid' src='"
+            			str = "<img class='img-fluid' src='"
                         	+ this.src
-                            + "' style='width: 390px; height: 390px; object-fit: cover;' /></div>";
+                            + "' style='width: 390px; height: 390px; object-fit: cover;' />";
                         $("#pickDownImg").html(str);
                           
             		});//onclick

@@ -27,8 +27,8 @@ public class MixServiceImpl implements MixService {
 
 
 	
-//	@Override
-//	public void make(MixVO mix) {
-//		
-//	}
+	@Override
+	public void clothMix(MixVO mix) {
+		mapper.clothMix(mix);
+	}
 }

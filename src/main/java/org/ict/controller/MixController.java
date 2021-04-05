@@ -9,19 +9,21 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 
 
 @RestController
-@RequestMapping("/list/*")
+@RequestMapping("/mix/*")
 public class MixController {
 
 	@Autowired
 	MixService service;
 	
-	@GetMapping(value="/up", 
+	@GetMapping(value="/upList", 
 				produces = {MediaType.APPLICATION_XML_VALUE,
 							MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<List<MixVO>> upList() {
@@ -35,7 +37,7 @@ public class MixController {
 		}
 		return entity;
 	}
-	@GetMapping(value="/down", 
+	@GetMapping(value="/downList", 
 				produces = {MediaType.APPLICATION_XML_VALUE,
 							MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<List<MixVO>> downList() {
@@ -49,7 +51,24 @@ public class MixController {
 		}
 		return entity;
 	}
-	
+	@RequestMapping(method=RequestMethod.POST, value="",
+			consumes = "application/json", produces = MediaType.TEXT_PLAIN_VALUE)
+	public ResponseEntity<String> clothMix(@RequestBody MixVO mix) {
+		// 먼저 상태코드와 데이터를 함께 전송할 수 있도록
+		// ResponseEntity를 미리 선언해둡니다.
+		ResponseEntity<String> entity = null;
+		try {
+			// 전달받은 vo를 이용해 리플 추가
+			service.clothMix(mix);
+			// try블럭내에서 문제 없었을 경우 200코드 전송
+			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<String>(
+					e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+	return entity;
+}
 }
 	
 

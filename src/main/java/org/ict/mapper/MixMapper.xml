@@ -14,6 +14,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select cgdowncimg from cgdowncloth
 	</select>
 
+	<insert id="clothMix">
+		INSERT into cgmix (cgupcno, cgdowncno)
+			VALUES (#{cgupcno}, #{cgdowncno})
+	</insert>
 </mapper>
 
 	

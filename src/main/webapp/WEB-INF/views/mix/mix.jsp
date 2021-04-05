@@ -75,65 +75,110 @@
                     </div>
             	</div>
             </div>
-                     <button position="left" style="height: 40px; width: 80px; font-size: 0.25rem;">투표 올리기</button>
-                     <button position="right" style="height: 40px; width: 80px; font-size: 0.25rem;">내 옷장 넣기</button>
+            	<footer>
+					<button id="clothMixBtn" position="left" style="height: 40px; width: 80px; font-size: 0.25rem;">투표 올리기</button>
+					<button position="right" style="height: 40px; width: 80px; font-size: 0.25rem;">내 옷장 넣기</button>
+            	</footer>
          	</div><!-- container -->
         </div>
-            <script type="text/javascript">
-            		
-            	$(document).ready(function(){
-            		function getUpList() {
-            			$.getJSON("/list/up", function(data){
-            				var str = "";
-            				
-            				$(data).each(function(){
-            					str += "<img class='img-fluid img-thumbnail' src='/resources/assets/img/cgup/"
-            						+ this.cgUpcImg
-                                	+ "' style='width: 100px; height: 100px; object-fit: cover;' />"
-            				});//each
-            				$("#upImg").html(str);
-            			});//JSON
-            		}//getUpList
-					getUpList();
-            		
-					function getDownList() {
-            			$.getJSON("/list/down", function(data){
-            				var str = "";
-            				
-            				$(data).each(function(){
-            					str += "<img class='img-fluid img-thumbnail' src='/resources/assets/img/cgdown/" 
-            						+ this.cgDowncImg
-                                	+ "' style='width: 100px; height: 100px; object-fit: cover;' />"
-            				});//each
-            				$("#downImg").html(str);
-            			});//JSON
-            		}//getDownList
-					getDownList();
-            		
-            		$("#upImg").on("click", "img", function(){
+<script type="text/javascript">
+       		
+	$(document).ready(function(){
+		function getUpList() {
+			$.getJSON("/mix/upList", function(data){
+				var str = "";
+       				
+				$(data).each(function(){
+					str += "<img class='img-fluid img-thumbnail' src='/resources/assets/img/cgup/"
+						+ this.cgUpcImg
+						+ "' style='width: 100px; height: 100px; object-fit: cover;' />"
+				});//each
+				$("#upImg").html(str);
+       		});//JSON
+       	}//getUpList
+		getUpList();
+		       		
+		function getDownList() {
+			$.getJSON("/mix/downList", function(data){
+				var str = "";
+     				
+				$(data).each(function(){
+					str += "<img class='img-fluid img-thumbnail' src='/resources/assets/img/cgdown/" 
+						+ this.cgDowncImg
+						+ "' style='width: 100px; height: 100px; object-fit: cover;' />"
+				});//each
+				$("#downImg").html(str);
+			});//JSON
+		}//getDownList
+		getDownList();
+       		
+   		var strUp = "";
+		var strDown = "";
+		var imgUp = "";
+		var imgDown = "";
+       		
+       	$("#upImg").on("click", "img", function(){
+       		imgUp = this.src;
+			strUp = "<img class='img-fluid' src='"
+				+ imgUp
+				+ "' style='width: 390px; height: 390px; object-fit: cover;' />";
+			$("#pickUpImg").html(strUp);                
+		});//onclick
+		$("#downImg").on("click", "img", function(){
+			imgDown = this.src;
+			strDown = "<img class='img-fluid' src='"
+					+ imgDown
+					+ "' style='width: 390px; height: 390px; object-fit: cover;' />";
+			$("#pickDownImg").html(strDown);                     
+		});//onclick
+       		
+		$("#pickUpImg").on("click", "img", function(){
+			imgUp = "";
+			strUp = "";
+			$("#pickUpImg").html(strUp);
+		});//onclick
+       		
+		$("#pickDownImg").on("click", "img", function(){
+			imgDown = "";
+			strDown = "";
+			$("#pickDownImg").html(strDown);
+		});//onclick
 
-            			var str = "";            			
-            			
-            			str = "<img class='img-fluid' src='"
-                        	+ this.src
-                            + "' style='width: 390px; height: 390px; object-fit: cover;' />";
-                        $("#pickUpImg").html(str);
-                          
-            		});//onclick
-            		$("#downImg").on("click", "img", function(){
-
-            			var str = "";            			
-            			
-            			str = "<img class='img-fluid' src='"
-                        	+ this.src
-                            + "' style='width: 390px; height: 390px; object-fit: cover;' />";
-                        $("#pickDownImg").html(str);
-                          
-            		});//onclick
-            
-            		
-            	});//document
-            </script>
+		$("#clothMixBtn").on("click", function(){
+// 			var cgupcno = ;
+// 			var cgdowncno = ;
+			
+			$.ajax({
+				type : 'post',
+				url : '/mix',
+				headers: {
+					"Content-Type" : "application/json",
+					"X-HTTP-Method-Override" : "POST"
+				},
+				dataType : 'text',
+				data : JSON.stringify({
+					cgupcno : cgupcno,
+					cgdowncno : cgdowncno
+				}),
+				success : function(result) {
+					if(result === 'SUCCESS') {
+						
+						alert("등록 되었습니다.");
+						// input 태그 내부를 비움
+// 						$("#").val("");
+// 						$("#").val("");
+						// location.href : 현재 페이지를 이 주소 옮기겠다.
+						// 에러가 났을 때 원인이 뭔지 모를때
+//							location.href="/board/get?bno=" + bno
+//										+ "&page=" + "${cri.page}"
+//										+ "&searchType=" + "${cri.searchType}"
+//										+ "&keyword=" + "${cri.keyword}"
+					}
+				}
+			})
+		})
+	});//document
+</script>
             
     </body>
 </html>

@@ -9,4 +9,6 @@ public interface MixMapper {
 	public List<MixVO> getUpList();
 
 	public List<MixVO> getDownList();
+	
+	public void clothMix(MixVO mix);
 }

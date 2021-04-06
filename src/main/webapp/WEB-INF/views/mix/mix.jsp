@@ -1,17 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <!-- Bootstrap core JS-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>Creative - Start Bootstrap Theme</title>
-<!-- Favicon-->
+<title>옷감</title>
 <!-- Font Awesome icons (free version)-->
 <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
 <!-- Google fonts-->
@@ -54,14 +53,14 @@
             <div class="row">
             	<div class="col-md-6">
             	
-	       			<ul id="upImg">
+	       			<div id="upImg">
 	       			<!-- 상의 리스트 -->
-	       			</ul>
+	       			</div>
             	</div>
             	<div class="col-md-6">
-	             	<ul id="downImg">
+	             	<div id="downImg">
 	       			<!-- 하의 리스트 -->
-	       			</ul>
+	       			</div>
             	</div>
             </div>
             </div>
@@ -84,14 +83,17 @@
 <script type="text/javascript">
        		
 	$(document).ready(function(){
+				
 		function getUpList() {
 			$.getJSON("/mix/upList", function(data){
 				var str = "";
-       				
+
 				$(data).each(function(){
-					str += "<img class='img-fluid img-thumbnail' src='/resources/assets/img/cgup/"
+					str += "<div class='upc' data-upno='"
+						+ this.cgUpcNo
+						+ "'><img class='img-fluid img-thumbnail' src='/resources/assets/img/cgup/"
 						+ this.cgUpcImg
-						+ "' style='width: 100px; height: 100px; object-fit: cover;' />"
+						+ "' style='width: 100px; height: 100px; object-fit: cover;' /></div>"
 				});//each
 				$("#upImg").html(str);
        		});//JSON
@@ -103,9 +105,11 @@
 				var str = "";
      				
 				$(data).each(function(){
-					str += "<img class='img-fluid img-thumbnail' src='/resources/assets/img/cgdown/" 
+					str +="<div class='downc' data-downno='"
+						+ this.cgDowncNo 
+						+ "'><img class='img-fluid img-thumbnail' src='/resources/assets/img/cgdown/" 
 						+ this.cgDowncImg
-						+ "' style='width: 100px; height: 100px; object-fit: cover;' />"
+						+ "' style='width: 100px; height: 100px; object-fit: cover;' /></div>"
 				});//each
 				$("#downImg").html(str);
 			});//JSON
@@ -116,15 +120,21 @@
 		var strDown = "";
 		var imgUp = "";
 		var imgDown = "";
+		var noUp = "";
+		var noDown = "";
        		
-       	$("#upImg").on("click", "img", function(){
+       	$("#upImg").on("click", ".upc img", function(){
+       		var upc = $(this).parent();
+       		noUp = upc.data("upno");
        		imgUp = this.src;
 			strUp = "<img class='img-fluid' src='"
 				+ imgUp
 				+ "' style='width: 390px; height: 390px; object-fit: cover;' />";
 			$("#pickUpImg").html(strUp);                
 		});//onclick
-		$("#downImg").on("click", "img", function(){
+		$("#downImg").on("click", ".downc img", function(){
+			var downc = $(this).parent();
+			noDown = downc.data("downno");
 			imgDown = this.src;
 			strDown = "<img class='img-fluid' src='"
 					+ imgDown
@@ -145,38 +155,28 @@
 		});//onclick
 
 		$("#clothMixBtn").on("click", function(){
-// 			var cgupcno = ;
-// 			var cgdowncno = ;
+			var cgupcno = noUp;
+			var cgdowncno = noDown;
+			console.log(noUp);
+			console.log(noDown);
 			
 			$.ajax({
 				type : 'post',
-				url : '/mix',
+				url : '/mix/make',
 				headers: {
 					"Content-Type" : "application/json",
 					"X-HTTP-Method-Override" : "POST"
 				},
 				dataType : 'text',
 				data : JSON.stringify({
-					cgupcno : cgupcno,
-					cgdowncno : cgdowncno
+					cgUpcNo : cgupcno,
+					cgDowncNo : cgdowncno
 				}),
 				success : function(result) {
-					if(result === 'SUCCESS') {
-						
 						alert("등록 되었습니다.");
-						// input 태그 내부를 비움
-// 						$("#").val("");
-// 						$("#").val("");
-						// location.href : 현재 페이지를 이 주소 옮기겠다.
-						// 에러가 났을 때 원인이 뭔지 모를때
-//							location.href="/board/get?bno=" + bno
-//										+ "&page=" + "${cri.page}"
-//										+ "&searchType=" + "${cri.searchType}"
-//										+ "&keyword=" + "${cri.keyword}"
-					}
 				}
-			})
-		})
+			})//ajax
+		})//clothMixBtn
 	});//document
 </script>
             

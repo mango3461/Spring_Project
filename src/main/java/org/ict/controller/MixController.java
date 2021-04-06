@@ -2,6 +2,8 @@ package org.ict.controller;
 
 import java.util.List;
 
+import org.ict.domain.CgDowncVO;
+import org.ict.domain.CgUpcVO;
 import org.ict.domain.MixVO;
 import org.ict.service.MixService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +28,8 @@ public class MixController {
 	@GetMapping(value="/upList", 
 				produces = {MediaType.APPLICATION_XML_VALUE,
 							MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<List<MixVO>> upList() {
-		ResponseEntity<List<MixVO>> entity = null;
+	public ResponseEntity<List<CgUpcVO>> upList() {
+		ResponseEntity<List<CgUpcVO>> entity = null;
 		
 		try {
 			entity = new ResponseEntity<>(service.getUpList(), HttpStatus.OK);
@@ -40,8 +42,8 @@ public class MixController {
 	@GetMapping(value="/downList", 
 				produces = {MediaType.APPLICATION_XML_VALUE,
 							MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<List<MixVO>> downList() {
-		ResponseEntity<List<MixVO>> entity = null;
+	public ResponseEntity<List<CgDowncVO>> downList() {
+		ResponseEntity<List<CgDowncVO>> entity = null;
 		
 		try {
 			entity = new ResponseEntity<>(service.getDownList(), HttpStatus.OK);
@@ -51,15 +53,15 @@ public class MixController {
 		}
 		return entity;
 	}
-	@RequestMapping(method=RequestMethod.POST, value="",
+	@RequestMapping(method=RequestMethod.POST, value="/make",
 			consumes = "application/json", produces = MediaType.TEXT_PLAIN_VALUE)
-	public ResponseEntity<String> clothMix(@RequestBody MixVO mix) {
+	public ResponseEntity<String> clothMix(@RequestBody MixVO vo) {
 		// 먼저 상태코드와 데이터를 함께 전송할 수 있도록
 		// ResponseEntity를 미리 선언해둡니다.
 		ResponseEntity<String> entity = null;
 		try {
 			// 전달받은 vo를 이용해 리플 추가
-			service.clothMix(mix);
+			service.clothMix(vo);
 			// try블럭내에서 문제 없었을 경우 200코드 전송
 			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
 		} catch (Exception e) {

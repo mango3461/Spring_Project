@@ -6,17 +6,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="org.ict.mapper.MixMapper">
 
 	<select id="getUpList"
-			resultType="org.ict.domain.MixVO">
-		select cgupcimg from cgupcloth
+			resultType="org.ict.domain.CgUpcVO">
+		select * from cgupcloth WHERE cgupcno > 0
 	
 	</select>
-	<select id="getDownList" resultType="org.ict.domain.MixVO">
-		select cgdowncimg from cgdowncloth
+	<select id="getDownList" resultType="org.ict.domain.CgDowncVO">
+		select * from cgdowncloth WHERE cgdowncno > 0
 	</select>
 
 	<insert id="clothMix">
 		INSERT into cgmix (cgupcno, cgdowncno)
-			VALUES (#{cgupcno}, #{cgdowncno})
+			VALUES (#{cgUpcNo}, #{cgDowncNo})
 	</insert>
 </mapper>
 

@@ -1,5 +1,7 @@
 package org.ict.domain;
 
+import java.sql.Date;
+
 import lombok.Data;
 
 @Data
@@ -10,4 +12,6 @@ public class MemberVO {
 	private String mpw;
 	private boolean mgen;
 	private int mage;
+	private String sessionId;
+	private Date sessionLimit;
 }

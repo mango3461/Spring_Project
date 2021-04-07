@@ -4,7 +4,8 @@ import java.util.List;
 
 import org.ict.domain.CgDowncVO;
 import org.ict.domain.CgUpcVO;
-import org.ict.domain.MixVO;
+import org.ict.domain.ClosetVO;
+import org.ict.domain.LikeVO;
 import org.ict.mapper.MixMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,7 +31,13 @@ public class MixServiceImpl implements MixService {
 
 	
 	@Override
-	public void clothMix(MixVO mix) {
-		mapper.clothMix(mix);
+	public void closetMix(ClosetVO vo) {
+		mapper.closetMix(vo);
+	}
+
+
+	@Override
+	public void likeMix(LikeVO vo) {
+		mapper.likeMix(vo);
 	}
 }

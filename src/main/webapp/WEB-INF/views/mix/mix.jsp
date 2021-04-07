@@ -75,8 +75,8 @@
             	</div>
             </div>
             	<footer>
-					<button id="clothMixBtn" position="left" style="height: 40px; width: 80px; font-size: 0.25rem;">투표 올리기</button>
-					<button position="right" style="height: 40px; width: 80px; font-size: 0.25rem;">내 옷장 넣기</button>
+					<button id="likeBtn" position="left" style="height: 40px; width: 80px; font-size: 0.25rem;">투표 올리기</button>
+					<button id="clothMixBtn" position="right" style="height: 40px; width: 80px; font-size: 0.25rem;">내 옷장 넣기</button>
             	</footer>
          	</div><!-- container -->
         </div>
@@ -157,12 +157,11 @@
 		$("#clothMixBtn").on("click", function(){
 			var cgupcno = noUp;
 			var cgdowncno = noDown;
-			console.log(noUp);
-			console.log(noDown);
+ 			var mno = "${login.mno}";
 			
 			$.ajax({
 				type : 'post',
-				url : '/mix/make',
+				url : '/mix/closet',
 				headers: {
 					"Content-Type" : "application/json",
 					"X-HTTP-Method-Override" : "POST"
@@ -170,7 +169,30 @@
 				dataType : 'text',
 				data : JSON.stringify({
 					cgUpcNo : cgupcno,
-					cgDowncNo : cgdowncno
+					cgDowncNo : cgdowncno,
+					mno : mno
+				}),
+				success : function(result) {
+						alert("등록 되었습니다.");
+				}
+			})//ajax
+		})//clothMixBtn
+		
+		$("#likeBtn").on("click", function(){
+			var cgupcno = noUp;
+			var cgdowncno = noDown;
+			
+			$.ajax({
+				type : 'post',
+				url : '/mix/like',
+				headers: {
+					"Content-Type" : "application/json",
+					"X-HTTP-Method-Override" : "POST"
+				},
+				dataType : 'text',
+				data : JSON.stringify({
+					cgUpcNo : cgupcno,
+					cgDowncNo : cgdowncno,
 				}),
 				success : function(result) {
 						alert("등록 되었습니다.");

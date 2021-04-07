@@ -14,9 +14,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from cgdowncloth WHERE cgdowncno > 0
 	</select>
 
-	<insert id="clothMix">
-		INSERT into cgmix (cgupcno, cgdowncno)
+	<insert id="likeMix">
+		INSERT into cglike (cgupcno, cgdowncno)
 			VALUES (#{cgUpcNo}, #{cgDowncNo})
+	</insert>
+
+	<insert id="closetMix">
+		INSERT into cgcloset (cgupcno, cgdowncno, mno)
+			VALUES (#{cgUpcNo}, #{cgDowncNo}, #{mno})
 	</insert>
 </mapper>
 

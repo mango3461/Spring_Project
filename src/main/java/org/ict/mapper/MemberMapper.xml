@@ -14,7 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		UPDATE cgmember
 			SET sessionKey = #{sessionId},
 				sessionLimit = #{next}
-			WHERE cgmid = #{mid}
+			WHERE mid = #{mid}
 	</update>
 	
 	<select id="checkUserWithSessionKey" resultType="org.ict.domain.MemberVO">
@@ -24,7 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="joinMem">
-		INSERT into cgmember (cgmid, cgpwd, cggen, cgage)
+		INSERT into cgmember (mid, mpw, mgen, mage)
 			VALUES
 				(#{mid}, #{mpw}, #{mgen}, #{mage})
 	</insert>

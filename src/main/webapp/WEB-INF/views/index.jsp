@@ -38,11 +38,11 @@
                         </c:if>
                         <c:if test="${not empty login }">
 	                        <li class="nav-item dropdown">
-	                            <a class="nav-link js-scroll-trigger dropdown-toggle" data-toggle="dropdown" href="/member">내 정보</a>
+	                            <a class="nav-link js-scroll-trigger dropdown-toggle" data-toggle="dropdown">내 정보</a>
 	                            
 	                            <div class="dropdown-menu">
 	                                
-	                                <a class="dropdown-item" href="/member/closet">내 옷장</a>
+	                                <a class="dropdown-item" href="/closet/${mno}">내 옷장</a>
 	                                <a class="dropdown-item" href="/member/pick">나의 pick 모음</a>
 	                          </div>
 	                        </li>

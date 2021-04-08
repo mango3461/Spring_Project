@@ -2,6 +2,8 @@ package org.ict.service;
 
 import java.util.List;
 
+import org.ict.domain.CgDowncVO;
+import org.ict.domain.CgUpcVO;
 import org.ict.domain.ClosetVO;
 import org.ict.mapper.ClosetMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +16,8 @@ public class ClosetServiceImpl implements ClosetService{
 	private ClosetMapper mapper;
 	
 	@Override
-	public List<ClosetVO> closetUpList(int mno) {
-		return mapper.closetUpList(mno);
+	public List<ClosetVO> closetList(int mno) {
+		return mapper.closetList(mno);
 	}
 
 }

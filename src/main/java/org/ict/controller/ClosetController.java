@@ -1,7 +1,11 @@
 package org.ict.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.ict.domain.CgDowncVO;
+import org.ict.domain.CgUpcVO;
 import org.ict.domain.ClosetVO;
 import org.ict.service.ClosetService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,16 +28,20 @@ public class ClosetController {
 	private ClosetService service;
 	
 	@GetMapping(value="/{mno}", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<List<ClosetVO>> closetUpList(@PathVariable("mno") Integer mno) {
+	public ResponseEntity<Map<String, Object>> closetList(@PathVariable("mno") Integer mno) {
 		
-		ResponseEntity<List<ClosetVO>> entity = null;
+		ResponseEntity<Map<String, Object>> entity = null;
 		
-		try {
-			entity = new ResponseEntity<>(service.closetUpList(mno), HttpStatus.OK);
-		} catch(Exception e) {
-			e.printStackTrace();
-			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-		}
+		Map<String, Object> result = new HashMap<>();
+		
+		List<ClosetVO> list = service.closetList(mno);
+		
+//		try {
+//			entity = new ResponseEntity<>(service.closetList(mno), HttpStatus.OK);
+//		} catch(Exception e) {
+//			e.printStackTrace();
+//			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//		}
 		
 		return entity;
 	}

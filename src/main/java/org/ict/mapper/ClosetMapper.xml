@@ -5,7 +5,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="org.ict.mapper.ClosetMapper">
 
-	<select id="closetUpList" resultType="org.ict.domain.CgUpcVO">
-		SELECT * from cgupcloth AS up, cgcloset AS clo WHERE up.cgupcno = clo.cgupcno AND clo.mno = #{mno};
+	<select id="closetList" resultType="org.ict.domain.ClosetVO">
+		SELECT * from cgcloset
+		WHERE mno = #{mno};
 	</select>
+	
+	<select id="">
+	</select>
+	
+<!-- 	<select id="closetList" resultType="org.ict.domain.ClosetVO"> -->
+<!-- 		SELECT * from cgupcloth AS up, cgcloset AS clo  -->
+<!-- 		WHERE up.cgupcno = clo.cgupcno AND clo.mno = #{mno}; -->
+<!-- 	</select> -->
 </mapper>

@@ -6,7 +6,7 @@ import lombok.Data;
 public class CgUpcVO {
 	
 	public int cgUpcNo;
-	public boolean cgUpcGen;
+	public int cgUpcGen;
 	public String cgUpcLink;
 	public String cgUpcImg;
 }

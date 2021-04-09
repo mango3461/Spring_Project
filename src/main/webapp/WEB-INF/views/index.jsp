@@ -33,17 +33,18 @@
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/vote">내 옷 취향 찾기</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/rank">랭킹보기</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/board">회원게시판</a></li>
+                        <li class="nav-item"><a class="dropdown-item" href="/closet/${mno}">내 옷장</a></li>
                         <c:if test="${empty login }">
                         	<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/login">로그인</a></li>
                         </c:if>
                         <c:if test="${not empty login }">
 	                        <li class="nav-item dropdown">
-	                            <a class="nav-link js-scroll-trigger dropdown-toggle" data-toggle="dropdown">내 정보</a>
+	                            <a class="nav-link js-scroll-trigger dropdown-toggle" data-toggle="dropdown" href="#">내 정보</a>
 	                            
 	                            <div class="dropdown-menu">
 	                                
 	                                <a class="dropdown-item" href="/closet/${mno}">내 옷장</a>
-	                                <a class="dropdown-item" href="/member/pick">나의 pick 모음</a>
+	                                <a class="dropdown-item" href="/member/pick">나의 pick모음</a>
 	                          </div>
 	                        </li>
                         </c:if>

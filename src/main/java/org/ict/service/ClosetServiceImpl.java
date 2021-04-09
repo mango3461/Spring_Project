@@ -18,6 +18,19 @@ public class ClosetServiceImpl implements ClosetService{
 	@Override
 	public List<ClosetVO> closetList(int mno) {
 		return mapper.closetList(mno);
+		
+	}
+
+	@Override
+	public CgUpcVO closetUp(int cgupcno) {
+		// TODO Auto-generated method stub
+		return mapper.closetUp(cgupcno);
+	}
+
+	@Override
+	public CgDowncVO closetDown(int cgdowncno) {
+		// TODO Auto-generated method stub
+		return mapper.closetDown(cgdowncno);
 	}
 
 }

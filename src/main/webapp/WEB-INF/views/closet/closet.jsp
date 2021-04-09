@@ -5,7 +5,7 @@
 <html>
 <head>
     <!-- Bootstrap core JS-->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -38,7 +38,7 @@
                 </c:if>
                 <c:if test="${not empty login }">
                  <li class="nav-item dropdown">
-                     <a class="nav-link js-scroll-trigger dropdown-toggle" data-toggle="dropdown" href="/member">내 정보</a>
+                     <a class="nav-link js-scroll-trigger dropdown-toggle" data-toggle="dropdown" href="#">내 정보</a>
                      
                      <div class="dropdown-menu">
                          
@@ -57,23 +57,29 @@
 </div>
 
 <script type="text/javascript">
-	var mno = 1;
+	
 	$(document).ready(function(){
+		var mno = "${login.mno}";
 		function closetList() {
 			$.getJSON("/closet/" + mno, function(data){
 				var str = "";
-				$(data).each(function(){
-					console.log(this);
-					str += "<div><img class='img-fluid' src='"
-						+ this.cgUpcNo 
-						+ "' /></div>"
-						+ "<div><img class='img-fluid' src='"
+				$(data.resultList).each(function(){
+// 					console.log(this);
+					str += "<div class='upc' data-upno='"
+						+ this.cgUpcNo
+						+ "'><img class='img-fluid img-thumbnail' src='/resources/assets/img/cgup/"
+						+ this.cgUpcImg
+						+ "' style='width: 100px; height: 100px; object-fit: cover;' /></div>"
+						+ "<div class='downc' data-downno='"
 						+ this.cgDowncNo 
-						+ "' /></div>"
+						+ "'><img class='img-fluid img-thumbnail' src='/resources/assets/img/cgdown/" 
+						+ this.cgDowncImg
+						+ "' style='width: 100px; height: 100px; object-fit: cover;' /></div>"
 				})
 				$("#closetLi").html(str);
 			})//json
 		}
+		closetList();
 	})
 </script>
 </body>

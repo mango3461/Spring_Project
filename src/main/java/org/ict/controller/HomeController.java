@@ -47,7 +47,10 @@ public class HomeController {
 	public String login() {
 		return "/member/login";
 	}
-	
+	@GetMapping("/closet")
+	public String closet() {
+		return "/closet/closet";
+	}
 	
 	@GetMapping("/test")
 	public void mixtest(){

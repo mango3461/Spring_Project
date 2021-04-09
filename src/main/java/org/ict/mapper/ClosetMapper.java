@@ -9,4 +9,8 @@ import org.ict.domain.ClosetVO;
 public interface ClosetMapper {
 
 	public List<ClosetVO> closetList(int mno);
+	
+	public CgUpcVO closetUp(int cgupcno);
+	
+	public CgDowncVO closetDown(int cgdowncno);
 }

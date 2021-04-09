@@ -1,11 +1,13 @@
 package org.ict.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.ict.domain.CgDowncVO;
 import org.ict.domain.CgUpcVO;
+import org.ict.domain.ClosetDTO;
 import org.ict.domain.ClosetVO;
 import org.ict.service.ClosetService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,13 +37,35 @@ public class ClosetController {
 		Map<String, Object> result = new HashMap<>();
 		
 		List<ClosetVO> list = service.closetList(mno);
+
+		List<ClosetDTO> resultList = new ArrayList<>();
+		list.forEach(closetVO -> {
+			CgUpcVO up = service.closetUp(closetVO.getCgUpcNo());
+			CgDowncVO down = service.closetDown(closetVO.getCgDowncNo());
+			ClosetDTO dto = new ClosetDTO();
+			dto.setCgUpcNo(up.getCgUpcNo());
+			dto.setCgUpcGen(up.getCgUpcGen());
+			dto.setCgUpcImg(up.getCgUpcImg());
+			dto.setCgUpcLink(up.getCgUpcLink());
+			dto.setCgDowncNo(down.getCgDowncNo());
+			dto.setCgDowncGen(down.getCgDowncGen());
+			dto.setCgDowncImg(down.getCgDowncImg());
+			dto.setCgDowncLink(down.getCgDowncLink());
+			//8개 필드에 넣고
+			
+			resultList.add(dto);
+		});
 		
-//		try {
-//			entity = new ResponseEntity<>(service.closetList(mno), HttpStatus.OK);
-//		} catch(Exception e) {
-//			e.printStackTrace();
-//			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//		}
+		
+		result.put("resultList", resultList);
+		
+		
+		try {
+			entity = new ResponseEntity<>(result, HttpStatus.OK);
+		} catch(Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
 		
 		return entity;
 	}

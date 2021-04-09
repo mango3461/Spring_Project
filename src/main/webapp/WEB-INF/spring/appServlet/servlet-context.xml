@@ -36,6 +36,11 @@
 			<mapping path="/mix/closet" />
 			<beans:ref bean="authInterceptor" />
 		</interceptor>
+		
+		<interceptor>
+			<mapping path="/closet" />
+			<beans:ref bean="authInterceptor" />
+		</interceptor>
 	</interceptors>
 	
 	

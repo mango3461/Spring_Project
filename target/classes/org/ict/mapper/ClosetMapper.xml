@@ -10,7 +10,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE mno = #{mno};
 	</select>
 	
-	<select id="">
+	<select id="closetUp" resultType="org.ict.domain.CgUpcVO">
+		SELECT * from cgupcloth
+		WHERE cgupcno = #{cgUpcNo};
+	</select>
+	
+	<select id="closetDown" resultType="org.ict.domain.CgDowncVO">
+		SELECT * from cgdowncloth
+		WHERE cgdowncno = #{cgDowncNo};
 	</select>
 	
 <!-- 	<select id="closetList" resultType="org.ict.domain.ClosetVO"> -->
